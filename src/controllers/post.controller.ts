@@ -20,15 +20,3 @@ export class PostController {
 	static async updatePost(req: ExRequest, res: ExResponse) {}
 	static async deletePost(req: ExRequest, res: ExResponse) {}
 }
-
-/**
- * @openapi
- * /posts:
- *  get:
- *   tag:
- *    Posts
- *   description: Description
- *   responses:
- *    200:
- *     description: success
- */
