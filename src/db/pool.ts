@@ -1,10 +1,10 @@
 import { Pool } from 'pg'
 
 const pool = new Pool({
-	user: undefined,
-	database: undefined,
-	port: undefined,
-	host: undefined,
+	user: 'maksimbelfer',
+	database: 'rest_api',
+	port: 5432,
+	host: 'localhost',
 })
 
-module.exports = pool
+export default pool
