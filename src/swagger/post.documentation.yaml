@@ -1,0 +1,112 @@
+# GET LIST
+/posts:
+  get:
+    tags:
+      - Posts
+    summary: List of posts
+    description: Get list of Posts
+    responses:
+      200:
+        description: success
+      400:
+        description: error
+      500:
+        description: error 2
+
+/post/{id}:
+  # GET BY ID
+  get:
+    tags:
+      - Posts
+    summary: Get current post by id
+    description: Get current post with id
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id of the post
+        schema:
+          type: integer
+          format: int64
+          minimum: 1
+          default: 1
+    responses:
+      200:
+        description: success
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePostResponse'
+      400:
+        description: error
+      500:
+        description: error 2
+  #  DELETE POST BY ID
+  delete:
+    tags:
+      - Posts
+    summary: Delete post
+    description: Delete current post by id
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id of the entity
+        schema:
+          type: integer
+          format: int64
+          minimum: 1
+    responses:
+      200:
+        description: success
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePostResponse'
+      400:
+        description: error
+      500:
+        description: error 2
+
+/post:
+  # CREATE NEW POST
+  post:
+    tags:
+      - Posts
+    summary: Create new post
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreatePostRequest'
+    responses:
+      200:
+        description: success
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePostResponse'
+      400:
+        description: error
+  # UPDATE POST BY ID
+  put:
+    tags:
+      - Posts
+    summary: Update post
+    description: Update post by id
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreatePostResponse'
+    responses:
+      200:
+        description: success
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePostResponse'
+      400:
+        description: error

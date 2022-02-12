@@ -11,7 +11,7 @@ const swaggerOptions: Options = {
 			version,
 		},
 	},
-	apis: ['./src/swagger/*.documentation.ts'],
+	apis: ['./src/swagger/*.documentation.*', './src/swagger/schemas/*'],
 }
 // './src/controllers/*.ts'
 

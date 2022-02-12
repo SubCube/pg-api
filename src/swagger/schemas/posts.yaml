@@ -1,0 +1,27 @@
+components:
+  schemas:
+    CreatePostRequest:
+      required:
+        - title
+        - description
+        - image
+      properties:
+        title:
+          type: string
+          default: Base title
+        description:
+          type: string
+          default: Base description
+        image:
+          type: string
+          default: https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/2560px-LEGO_logo.svg.png
+    CreatePostResponse:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        image:
+          type: string
