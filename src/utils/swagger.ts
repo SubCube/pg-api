@@ -22,7 +22,7 @@ function swaggerDocs(app: Express, port: number) {
 	app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 	//Docs in JSON
-	app.get('docs.json', (_req: ExRequest, res: ExResponse) => {
+	app.get('/docs-json', (_req: ExRequest, res: ExResponse) => {
 		res.json(swaggerSpec)
 	})
 
