@@ -32,7 +32,7 @@ export class PostController {
 	}
 	static async deletePost(req: ExRequest, res: ExResponse) {
 		const id = req.params.id
-		const post = await pool.query(`DELETE FROM post WHERE id = $1`, [id])
+		const post = await pool.query(`DELETE FROM post WHERE id = $1  RETURNING *`, [id])
 		res.json(post.rows[0])
 	}
 }
