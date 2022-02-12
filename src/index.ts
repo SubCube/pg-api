@@ -22,6 +22,6 @@ app.get('/', (_req: ExRequest, res: ExResponse) => {
 
 app.get('/posts', PostController.getPosts)
 app.post('/post', PostController.createPost)
-app.get('/post:id', PostController.getPost)
+app.get('/post/:id', PostController.getPost)
 app.put('/post', PostController.updatePost)
-app.delete('/post:id', PostController.deletePost)
+app.delete('/post/:id', PostController.deletePost)
