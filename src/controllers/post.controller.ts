@@ -16,7 +16,25 @@ export class PostController {
 		const list = await pool.query(`SELECT * FROM post`)
 		res.json(list.rows)
 	}
-	static async getPost(req: ExRequest, res: ExResponse) {}
-	static async updatePost(req: ExRequest, res: ExResponse) {}
-	static async deletePost(req: ExRequest, res: ExResponse) {}
+	static async getPost(req: ExRequest, res: ExResponse) {
+		const id = req.params.id
+		const post = await pool.query(`SELECT * FROM post WHERE id = $1`, [id])
+		res.json(post.rows[0])
+	}
+	static async updatePost(req: ExRequest, res: ExResponse) {
+		const { title, description, image, id }: { title: string; description: string; image: string; id: number } =
+			req.body
+		const updatedPost = await pool.query(`UPDATE post SET title = $1, description = $2, image = $3 WHERE id = $4`, [
+			title,
+			description,
+			image,
+			id,
+		])
+		res.json(updatedPost.rows[0])
+	}
+	static async deletePost(req: ExRequest, res: ExResponse) {
+		const id = req.params.id
+		const post = await pool.query(`DELETE FROM post WHERE id = $1`, [id])
+		res.json(post.rows[0])
+	}
 }
