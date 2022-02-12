@@ -24,12 +24,10 @@ export class PostController {
 	static async updatePost(req: ExRequest, res: ExResponse) {
 		const { title, description, image, id }: { title: string; description: string; image: string; id: number } =
 			req.body
-		const updatedPost = await pool.query(`UPDATE post SET title = $1, description = $2, image = $3 WHERE id = $4`, [
-			title,
-			description,
-			image,
-			id,
-		])
+		const updatedPost = await pool.query(
+			`UPDATE post SET title = $1, description = $2, image = $3 WHERE id = $4 RETURNING *`,
+			[title, description, image, id]
+		)
 		res.json(updatedPost.rows[0])
 	}
 	static async deletePost(req: ExRequest, res: ExResponse) {
