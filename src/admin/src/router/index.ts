@@ -7,6 +7,12 @@ const routes: Array<RouteRecordRaw> = [
 		component: () => import(/* webpackChunkName: "main" */ '../views/Main.vue'),
 		meta: { template: 'AppTemplate', isAuthRequired: false },
 	},
+	{
+		path: '/edit/:id',
+		name: 'edit',
+		component: () => import(/* webpackChunkName: "main" */ '../views/EditCArd.vue'),
+		meta: { template: 'AppTemplate', isAuthRequired: false },
+	},
 
 	{
 		path: '/about',

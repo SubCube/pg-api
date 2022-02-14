@@ -13,10 +13,10 @@ export class PostsService {
     /**
      * List of posts
      * Get list of Posts
-     * @returns any success
+     * @returns CreatePostResponse success
      * @throws ApiError
      */
-    public static get(): CancelablePromise<any> {
+    public static get(): CancelablePromise<Array<CreatePostResponse>> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/posts',
