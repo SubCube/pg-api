@@ -1,6 +1,13 @@
 import { Request as ExRequest, Response as ExResponse } from 'express'
 import pool from '../db/pool'
 
+export interface CreatePostResponse {
+	title: string
+	description: string
+	image: string
+	id: number
+}
+
 export class PostController {
 	static async createPost(req: ExRequest, res: ExResponse) {
 		const { title, description, image }: { title: string; description: string; image: string } = req.body
@@ -22,8 +29,7 @@ export class PostController {
 		res.json(post.rows[0])
 	}
 	static async updatePost(req: ExRequest, res: ExResponse) {
-		const { title, description, image, id }: { title: string; description: string; image: string; id: number } =
-			req.body
+		const { title, description, image, id }: CreatePostResponse = req.body
 		const updatedPost = await pool.query(
 			`UPDATE post SET title = $1, description = $2, image = $3 WHERE id = $4 RETURNING *`,
 			[title, description, image, id]
