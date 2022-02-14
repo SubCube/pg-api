@@ -1,6 +1,6 @@
 {
 	"name": "pg-api",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Postgres API",
 	"main": "src/index.ts",
 	"repository": "https://github.com/SubCube/pg-api.git",
