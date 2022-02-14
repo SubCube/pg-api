@@ -1,18 +1,15 @@
-<script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { useCounterStore } from './stores/counter'
-const store = useCounterStore()
-const { counter } = storeToRefs(store)
-const { increment } = store
-</script>
-
 <template>
-	<header>header</header>
-
-	<main>
-		<div>{{ counter }}</div>
-		<div>
-			<button @click="increment">Increment</button>
-		</div>
-	</main>
+	<component :is="$route.meta.template" />
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+import AppTemplate from '@/templates/App.vue'
+import PlainTemplate from '@/templates/Plain.vue'
+
+export default defineComponent({
+	name: 'App',
+	components: { AppTemplate, PlainTemplate },
+})
+</script>
