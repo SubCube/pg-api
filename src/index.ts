@@ -1,6 +1,7 @@
 import express, { Response as ExResponse, Request as ExRequest } from 'express'
 import { PostController } from './controllers/post.controller'
 import swaggerDocs from './utils/swagger'
+import cors from 'cors'
 
 export const app = express()
 
@@ -9,7 +10,14 @@ app.listen(5000, () => {
 	swaggerDocs(app, 5000)
 })
 
+const allowedOrigins = ['http://localhost:3000']
+
+const options: cors.CorsOptions = {
+	origin: allowedOrigins,
+}
+
 app.use(express.json())
+app.use(cors(options))
 
 app.get('/', (_req: ExRequest, res: ExResponse) => {
 	res.json({
