@@ -10,7 +10,7 @@ const routes: Array<RouteRecordRaw> = [
 	{
 		path: '/edit/:id',
 		name: 'edit',
-		component: () => import(/* webpackChunkName: "main" */ '../views/EditCArd.vue'),
+		component: () => import(/* webpackChunkName: "main" */ '../views/CreateEditCard.vue'),
 		meta: { template: 'AppTemplate', isAuthRequired: false },
 	},
 

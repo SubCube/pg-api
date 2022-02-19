@@ -37,8 +37,11 @@ export default defineComponent({
 .card {
 	width: calc(25% - 20px);
 	margin: 10px;
-	height: 100%;
+	height: auto;
 	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 .controls {
 	display: flex;

@@ -2,27 +2,28 @@
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 import Card from '../components/Card.vue'
-import { useCounterStore } from '../stores/counter'
+import CreateCard from '../components/CreateCard.vue'
+
+import { usePostsStore } from '../store/posts'
+
 const router = useRouter()
 
-const store = useCounterStore()
-const { counter, list } = storeToRefs(store)
-const { increment } = store
+const store = usePostsStore()
+const { list } = storeToRefs(store)
+const { getList, deletePost } = store
+
+getList()
 
 const edit = (id: number) => router.push({ name: 'edit', params: { id } })
-const deleteItem = (id: number) => console.log(`deleted ${id}`)
+const deleteItem = async (id: number) => {
+	await deletePost(id)
+	await getList()
+}
 </script>
 
 <template>
 	<q-page>
-		<q-card bordered primary>
-			<q-card-section>
-				{{ counter }}
-			</q-card-section>
-			<q-card-section>
-				<q-btn color="primary" @click="increment">Increment</q-btn>
-			</q-card-section>
-		</q-card>
+		<CreateCard />
 		<q-list style="display: flex; flex-wrap: wrap">
 			<Card
 				v-for="item in list"
