@@ -8,6 +8,7 @@
 			<q-input label="description" v-model="obj.description" />
 			<q-input label="image" v-model="obj.image" />
 			<img :src="obj.image" style="width: 300px; height: auto" />
+			<q-btn @click="editPost(obj)">Edit</q-btn>
 		</q-form>
 	</q-page>
 </template>
@@ -21,7 +22,7 @@ const name = ref('')
 const route = useRoute()
 const router = useRouter()
 const store = usePostsStore()
-const { getPost } = store
+const { getPost, editPost } = store
 
 const obj = ref<Post>(new Post())
 onMounted(async () => {

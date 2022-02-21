@@ -22,5 +22,10 @@ export const usePostsStore = defineStore('posts', {
 		async deletePost(id: number) {
 			return await PostsService.delete(id)
 		},
+
+		async editPost(post: Post) {
+			await PostsService.put(post)
+			await this.getList()
+		},
 	},
 })
